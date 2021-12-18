@@ -1,0 +1,15 @@
+[Unit]
+Description=tvplayer
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/simpsonstv/
+ExecStart=/usr/bin/python /home/pi/simpsonstv/player.py
+Restart=always
+User=pi
+Environment="XDG_RUNTIME_DIR=/run/user/$UID"
+Environment="DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$UID/bus"
+
+[Install]
+WantedBy=multi-user.target
+
